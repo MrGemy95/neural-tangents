@@ -590,7 +590,7 @@ def _GeneralConv(dimension_numbers,
     init_padding = Padding.SAME
 
   def input_total_dim(input_shape):
-    return input_shape[lhs_spec.index('C')] * np.prod(filter_shape)
+    return input_shape[lhs_spec.index('C')] * np.prod(np.array(filter_shape))
 
   ntk_init_fn, _ = ostax.GeneralConv(dimension_numbers, out_chan, filter_shape,
                                      strides, init_padding.name, W_init, b_init)
